@@ -12,7 +12,7 @@ class SileroTtsService:
     Generate TTS wav files using Silero
     """
     def __init__(self, sample_path, sessions_path="sessions") -> None:
-        self.sample_text = "The fallowed fallen swindle auspacious goats in portable power stations."
+        self.sample_text = "Welcome to a Westworld that has everything you need."
         self.sample_path = sample_path
         self.sessions_path = sessions_path
         # Silero works fine on CPU
