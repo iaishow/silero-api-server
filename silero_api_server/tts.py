@@ -16,7 +16,9 @@ class SileroTtsService:
         self.sample_path = sample_path
         self.sessions_path = sessions_path
         # Silero works fine on CPU
-        self.device = torch.device('cpu')
+        #self.device = torch.device('cpu')
+        self.device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
         torch.set_num_threads(4)
         torchaudio.set_audio_backend("soundfile")
 
@@ -40,7 +42,8 @@ class SileroTtsService:
         self.model.to(self.device)
 
         self.sample_rate = 48000 
-        logger.info(f"TTS Service loaded successfully") 
+        #logger.info(f"TTS Service loaded successfully") 
+        logger.info(f"TTS Service loaded successfully on '{self.device}' mode") 
 
     def generate(self, speaker, text: str, session=""):
         """
